@@ -1,24 +1,23 @@
-"use strict";
+"use strict"; //this works
 
-async function createData(data) {
-
-  let promise = fetch("http://localhost:3000/users", {
+async function updateTodo(todo) {
+  let promise = fetch("http://localhost:3000/todos/", {
     method: "POST",
-    body: JSON.stringify(data),
+    body: JSON.stringify(todo),
     headers: {
-        "Content-type": "application/json"
-    }
+      "Content-type": "application/json",
+    },
   });
 
   let response = await promise;
-  let responseData = await response.json();
-  console.log(responseData);
+  let responseTodo = await response.json();
+  console.log(responseTodo);
 }
 
-let user = {
-  name: "Aubrey Graham",
-  username: "drake",
-  email: "drake@youngmoney.com",
+let todo = {
+  userId: 1,
+  title: "brush teeth (don't forget to take cap off)",
+  completed: false
 };
 
-createData(user);
+updateTodo(todo);

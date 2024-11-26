@@ -1,0 +1,35 @@
+"use strict"; //this works
+
+async function deleteTodo(todo) {
+  let promise = fetch("http://localhost:3000/todos/" + todo.id, {
+    method: "DELETE",
+    body: JSON.stringify(todo),
+    headers: {
+    //   "Content-type": "application/json",
+    },
+  });
+
+  let response = await promise;
+  let responseTodo = await response.json();
+  console.log(responseTodo);
+}
+
+
+// ** What is no longer needed
+//  let todo = //{
+//   userId: 1,
+//   title: "brush teeth (don't forget to take cap off)",
+//   completed: false,
+//   id: 4
+// };
+
+// deleteTodo(todo);
+// ** What is no longer needed
+
+
+// This was copied from PUT.
+// 1)) make sure the HTTP Method is DELETE
+// 2)) URL should come after the HTTP Method
+// 3)) you need to put an id at the end
+// 4)) no headers needed
+// 5)) no body needed
